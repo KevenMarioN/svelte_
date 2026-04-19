@@ -1,34 +1,40 @@
 <script>
-    // Use $state when you need a reactive variable
-    let count = $state(0);
+    let disabled = $state(true);
+    let isLoged = $state(false);
 
-    // Use $derived when you need a new result derived from a $state
-    let doubleCount = $derived(count * 2);
-
-    // Use $effect when you need to execute another function when the state changes
-    $effect(() => {
-        console.log(`Count: ${count}, Double Count: ${doubleCount}`);
-    });
-
-    function increment() {
-        count++;
-    }
-
-    function decrement() {
-        count--;
-    }
-
-    function reset() {
-        count = 0;
+    function toogleClickMe() {
+        disabled = !disabled;
     }
 </script>
 
-<button onclick={increment}>Increment</button>
-<button onclick={decrement}>Decrement</button>
+<div class="flex justify-center items-center h-screen">
+    <div class="text-center">
+        <button
+            {disabled}
+            onclick={() => console.log("Button Clicked")}
+            class="px-4 py-2 bg-blue-500 text-white roudend disabled:bg-gray-400"
+        >
+            Click Me
+        </button>
 
-<button onclick={reset}>Reset</button>
-
-<p>Counter: {count}</p>
-<p>Double Counter: {doubleCount}</p>
+        <button
+            onclick={toogleClickMe}
+            class="px-4 py-2 bg-green-700 text-white roudend"
+        >
+            Toggle
+        </button>
+    </div>
+    <div class="text-center">
+        <p>{isLoged ? "Welcome back!" : "Login is necessary"}</p>
+        <button
+            class="px-4 py-2 {isLoged
+                ? 'bg-red-500'
+                : 'bg-green-700'} text-white roudend"
+            onclick={() => {
+                isLoged = !isLoged;
+            }}>{isLoged ? "Logout" : "Login"}</button
+        >
+    </div>
+</div>
 
 <style></style>
