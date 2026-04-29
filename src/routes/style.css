@@ -1,0 +1,27 @@
+label {
+	display: block;
+}
+
+header {
+    border-bottom: solid 1px var(--tint-or-shade);
+    .layout-readble {
+        align-items: center;
+    }
+    padding-block: var(--vs-s);
+    main {
+        padding-block: var(--vs-s);
+    }
+}
+
+a {
+	color: var(--white);
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.button,
+button {
+	display: inline-block;
+}

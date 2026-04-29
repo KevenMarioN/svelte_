@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { authClient } from '$lib/auth/auth-client';
+	import { getUser } from '../../user.remote';
 
 	interface SignUpForm {
 		username: string;
@@ -46,6 +47,7 @@
 			{ email: formData.email, password: formData.password, name: formData.username },
 			{
 				onSuccess: async () => {
+					getUser().refresh();
 					goto(resolve('/'));
 				}
 			}
@@ -91,3 +93,7 @@
 		<button type="submit">Sign Up</button>
 	</form>
 </div>
+
+<p>
+	Already have an account? <a href={resolve('/auth/login')}>Login</a>
+</p>
