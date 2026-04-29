@@ -1,5 +1,6 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
+	import '@drop-in/graffiti';
 
 	let { children } = $props();
 </script>
@@ -8,4 +9,6 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<main class="layout-readable center">
+	{@render children()}
+</main>
